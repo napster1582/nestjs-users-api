@@ -1,8 +1,10 @@
+import { TaskEntity } from 'src/task/entities/task.entity';
 import {
   BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -42,4 +44,7 @@ export class UsersEntity extends BaseEntity {
     onDelete: 'CASCADE',
   })
   userDetail: UserDetailEntity;
+
+  @OneToMany((type) => TaskEntity, (task) => task.idUser)
+  task: TaskEntity[];
 }

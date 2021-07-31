@@ -1,4 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TaskRepository } from './task.repository';
 
 @Injectable()
-export class TaskService {}
+export class TaskService {
+  constructor(
+    @InjectRepository(TaskRepository)
+    private _taskRepository: TaskRepository,
+  ) {}
+}
